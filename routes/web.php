@@ -1,5 +1,8 @@
 <?php
+
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,24 +13,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function(){
-    return view('about');
-})->name('about.page');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/contact', function(){
-    return view('contact');
-})->name('contact.page');
-
-Route::get('/pengguna/{id}', function ($id) {
-    return "Halaman Pengguna dengan ID: " . $id;
-})->name('pengguna.page');
-
-Route::prefix('manage')->group(function () {
-    Route::get('/edit-profile', function() {
-        return view('manage.edit');
-    })->name('edit.page');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+require __DIR__.'/auth.php';
