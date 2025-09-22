@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+// use App\
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/rahasia', function(){
+    return 'Ini path rahasia';
+})->middleware(['auth','RoleCheck:admin']);
+
+Route::get('/product/{id}', [ProductController::class,'index'])
+->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
+->name('product');
+
 
 require __DIR__.'/auth.php';

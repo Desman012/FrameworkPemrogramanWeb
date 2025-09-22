@@ -45,6 +45,10 @@ class Kernel extends HttpKernel
         ],
     ];
 
+    // protected $routeMiddleware = [
+    //     'RoleCheck' => \App\Http\Middleware\RoleCheck::class,
+    // ];
+
     /**
      * The application's middleware aliases.
      *
@@ -64,5 +68,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'RoleCheck' => \App\Http\Middleware\RoleCheck::class,
     ];
 }
