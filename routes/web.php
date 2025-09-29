@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UtsController;
 use Illuminate\Support\Facades\Route;
 // use App\
 
@@ -42,6 +43,6 @@ Route::get('/barang/{id}',[ProductController::class,'show']);
 
 Route::get('/produk', [ProductController::class, 'produk']);
 
-Route::get('/uts');
+Route::get('/uts', [UtsController::class, 'view']);
 
 require __DIR__.'/auth.php';
