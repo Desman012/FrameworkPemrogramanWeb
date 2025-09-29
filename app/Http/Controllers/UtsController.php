@@ -61,4 +61,19 @@ class UtsController extends Controller
     {
         //
     }
+    public function view()
+    {
+        //
+        return view('uts');
+    }
+        public function web()
+    {
+        //
+        return view('pemrograman-web');
+    }
+            public function db()
+    {
+        //
+        return view('pemrograman-db');
+    }
 }

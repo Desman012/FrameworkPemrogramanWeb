@@ -43,6 +43,8 @@ Route::get('/barang/{id}',[ProductController::class,'show']);
 
 Route::get('/produk', [ProductController::class, 'produk']);
 
-Route::get('/uts', [UtsController::class, 'view']);
+Route::get('/uts', [UtsController::class, 'view'])->name('uts');
+Route::get('/uts-web', [UtsController::class, 'web'])->name('web');
+Route::get('/uts-db', [UtsController::class, 'db'])->name('db');
 
 require __DIR__.'/auth.php';
