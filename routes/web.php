@@ -38,5 +38,10 @@ Route::get('/product/{id}', [ProductController::class,'index'])
 ->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
 ->name('product');
 
+Route::get('/barang/{id}',[ProductController::class,'show']);
+
+Route::get('/produk', [ProductController::class, 'produk']);
+
+Route::get('/uts');
 
 require __DIR__.'/auth.php';
