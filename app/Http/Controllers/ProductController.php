@@ -9,9 +9,25 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index($msg)
     {
-    return view('product', compact('id'));
+        if ($msg === 'ganjil') {
+            $alertType = 'warning';
+            $message = 'Parameter ganjil diterima';
+        } elseif ($msg === 'genap') {
+            $alertType = 'success';
+            $message = 'Parameter genap diterima';
+        } else {
+            $alertType = 'danger';
+            $message = 'Parameter tidak dikenali';
+        }
+
+        // kirim data ke view
+        return view('product', [
+            'msg' => $msg,
+            'alertType' => $alertType,
+            'message' => $message
+        ]);  
     }
 
     /**

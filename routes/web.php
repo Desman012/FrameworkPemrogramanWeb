@@ -35,7 +35,7 @@ Route::get('/rahasia', function(){
     return 'Ini path rahasia';
 })->middleware(['auth','RoleCheck:admin']);
 
-Route::get('/product/{id}', [ProductController::class,'index'])
+Route::get('/product/{msg}', [ProductController::class,'index'])
 ->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
 ->name('product');
 
